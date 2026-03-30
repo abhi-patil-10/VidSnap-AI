@@ -14,7 +14,7 @@ if __name__ == "__main__":
     folders = os.listdir("user-uploads")
     done_folders = [f.strip() for f in done_folders]
   
-   
+   #storing the names of folders which are already converted into reel inside done.txt to avoid duplicate conversion
     for folder in folders:
         if folder not in done_folders:
             text_to_audio(folder)
