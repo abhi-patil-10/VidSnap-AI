@@ -19,6 +19,7 @@ def create():
     if request.method == "POST":
         rec_id = request.form.get("uuid")
         desc = request.form.get("text")
+        input_files = []
         for key , values in request.files.items():
             print(key,values)
             
@@ -29,11 +30,15 @@ def create():
                 if(not(os.path.exists(os.path.join(app.config['UPLOAD_FOLDER'],rec_id)))):
                     os.mkdir(os.path.join(app.config['UPLOAD_FOLDER'],rec_id))     
                 file.save(os.path.join(app.config['UPLOAD_FOLDER'] , rec_id,filename))
+                input_files.append(filename)
                 
                 #capture the description entered by user
                 with open(os.path.join(app.config['UPLOAD_FOLDER'], rec_id ,"Description.txt") , "w") as file:
                     file.write(desc)
-                            
+        
+        for fl in input_files:
+            with open(os.path.join(app.config['UPLOAD_FOLDER'] , rec_id , "input.txt") , "a") as f:
+                f.write(f"file '{fl}' \nduration 1 \n")
         
             
         
