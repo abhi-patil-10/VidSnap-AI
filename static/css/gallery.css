@@ -16,6 +16,9 @@
     padding: 1rem;
 }
 
+.gallary-grid video{
+    width: 340px
+}
 .gallery-item {
     transition: transform 0.3s ease;
 }

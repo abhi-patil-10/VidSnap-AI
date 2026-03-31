@@ -14,7 +14,7 @@ def text_to_audio(folder):
 def create_reel(folder):
     ffmpeg_path = r"C:\Program Files\ffmpeg\bin\ffmpeg.exe"
     
-    command = [
+    command = [      
         ffmpeg_path,
         "-f", "concat",
         "-safe", "0",
